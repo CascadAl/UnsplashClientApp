@@ -41,21 +41,6 @@ class UnsplashPhotoAdapter constructor(context: Context, private val isMultipleS
         // item
         getItem(position)?.let { photo ->
             // image
-
-            photo.id
-
-            photo.user.name
-            photo.user.username
-
-            photo.user.location
-            photo.description
-
-            photo.likes
-
-            photo.height
-            photo.width
-
-
             holder.imageView.aspectRatio = photo.height.toDouble() / photo.width.toDouble()
             holder.itemView.setBackgroundColor(Color.parseColor(photo.color))
             Picasso.get().load(photo.urls.small)
@@ -69,7 +54,17 @@ class UnsplashPhotoAdapter constructor(context: Context, private val isMultipleS
                     if (mSelectedIndexes.contains(holder.adapterPosition)) View.VISIBLE else View.INVISIBLE
             // click listener
             holder.itemView.setOnClickListener {
-                mOnPhotoSelectedListener?.onPhotoSelected(mSelectedIndexes.size)
+                //mOnPhotoSelectedListener?.onPhotoSelected(mSelectedIndexes.size)
+                photo.let {
+                    mOnPhotoSelectedListener?.onPhotoSelected(
+                        it.user.name,
+                        it.user.username,
+                        it.user.location.toString(),
+                        it.description.toString(),
+                        it.likes.toString(),
+                        it.urls.regular!!
+                    )
+                }
             }
             holder.itemView.setOnLongClickListener {
                 photo.urls.regular?.let {

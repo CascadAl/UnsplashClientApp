@@ -9,7 +9,7 @@ interface OnPhotoSelectedListener {
      *
      * @param nbOfSelectedPhotos the number of selected photos
      */
-    fun onPhotoSelected(nbOfSelectedPhotos: Int)
+    fun onPhotoSelected(name: String, username: String, location: String, description: String, likes: String, url: String)
 
     /**
      * When the user long presses an photo.

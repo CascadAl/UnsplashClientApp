@@ -12,13 +12,12 @@ class PhotoShowActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_image_show)
-        setContentView(R.layout.activity_detail_unsplash_picker)
+        setContentView(R.layout.activity_image_show)
         // loading the image thanks to its url
-        /*Picasso.get().load(intent.getStringExtra(EXTRA_URL))
-            .into(image_show_view)*/
+        Picasso.get().load(intent.getStringExtra(EXTRA_URL))
+            .into(image_show_view)
         // click listener
-        //image_show_layout.setOnClickListener { supportFinishAfterTransition() }
+        image_show_layout.setOnClickListener { supportFinishAfterTransition() }
     }
 
     override fun onBackPressed() {

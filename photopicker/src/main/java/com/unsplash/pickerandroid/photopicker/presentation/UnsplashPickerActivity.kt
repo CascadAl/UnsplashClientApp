@@ -104,32 +104,8 @@ class UnsplashPickerActivity : AppCompatActivity(), OnPhotoSelectedListener {
         mAdapter.notifyDataSetChanged()
     }
 
-    override fun onPhotoSelected(nbOfSelectedPhotos: Int) {
-        // if multiple selection
-        /*if (mIsMultipleSelection) {
-            // update the title
-            unsplash_picker_title_text_view.text = when (nbOfSelectedPhotos) {
-                0 -> getString(R.string.unsplash)
-                1 -> getString(R.string.photo_selected)
-                else -> getString(R.string.photos_selected, nbOfSelectedPhotos)
-            }
-            // updating state
-            if (nbOfSelectedPhotos > 0) {
-                // only once, ignoring all subsequent photo selections
-                if (mCurrentState != UnsplashPickerState.PHOTO_SELECTED) {
-                    mPreviousState = mCurrentState
-                    mCurrentState = UnsplashPickerState.PHOTO_SELECTED
-                }
-                updateUiFromState()
-            } else { // no photo selected means un-selection
-                onBackPressed()
-            }
-        }
-        // if single selection send selected photo as a result
-        else if (nbOfSelectedPhotos > 0) {
-            sendPhotosAsResult()
-        }*/
-        startActivity(Intent(this, DetailUnsplashPickerActivity::class.java))
+    override fun onPhotoSelected(name: String, username: String, location: String, description: String, likes: String, url: String) {
+        startActivity(DetailUnsplashPickerActivity.getStartingIntent(this, name, username, location, description, likes, url))
     }
 
     /**
